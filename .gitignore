@@ -1,0 +1,15 @@
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+*.cmd
+#  忽略 iws iml ipr cmd结尾的文件
+HELP.md
+mvnw
+#########
+/.idea/
+/target/
+/.mvn/
+#忽略.idea
