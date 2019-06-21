@@ -11,5 +11,6 @@ mvnw
 #########
 /.idea/
 /target/
-/.mvn/
+/.mvn/wapper
+/.mvn/wrapper/
 #忽略.idea
