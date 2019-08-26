@@ -1,0 +1,18 @@
+netstat -ntlp  #检验本机各端口的网络服务运行状况。
+ps -ef |grep tomcat |grep -v 'grep'| awk '{print $2}' | xargs kill -s 9
+netstat -ntlp  #检验本机各端口的网络服务运行状况。
+ps -ef |grep tomcat |grep -v 'grep'| awk '{print $2}' | xargs kill -s 9
+netstat -ntlp  #检验本机各端口的网络服务运行状况。
+ps -ef |grep tomcat |grep -v 'grep'| awk '{print $2}' | xargs kill -s 9
+netstat -ntlp  #检验本机各端口的网络服务运行状况。
+ps -ef |grep tomcat |grep -v 'grep'| awk '{print $2}' | xargs kill -s 9
+netstat -ntlp  #检验本机各端口的网络服务运行状况。
+ps -ef |grep tomcat |grep -v 'grep'| awk '{print $2}' | xargs kill -s 9
+netstat -ntlp  #检验本机各端口的网络服务运行状况。
+ps -ef |grep tomcat |grep -v 'grep'| awk '{print $2}' | xargs kill -s 9
+netstat -ntlp  #检验本机各端口的网络服务运行状况。
+ps -ef |grep tomcat |grep -v 'grep'| awk '{print $2}' | xargs kill -s 9
+netstat -ntlp  #检验本机各端口的网络服务运行状况。
+ps -ef |grep tomcat |grep -v 'grep'| awk '{print $2}' | xargs kill -s 9
+netstat -ntlp  #检验本机各端口的网络服务运行状况。
+ps -ef |grep tomcat |grep -v 'grep'| awk '{print $2}' | xargs kill -s 9
