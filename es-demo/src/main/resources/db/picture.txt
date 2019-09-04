@@ -1,0 +1,36 @@
+PUT /idx_picture
+{
+  "settings": {
+    "number_of_shards" :   5,
+    "number_of_replicas" : 1
+  },
+  "mappings": {
+    "doc": {
+      "dynamic": false,
+      "properties": {
+        "pictureId": {
+          "type": "long",
+          "index": true
+        },
+        "title": {
+          "type": "text",
+          "index": true,
+          "analyzer": "ik_max_word",
+          "search_analyzer": "ik_smart"
+        },
+        "type": {
+          "type": "integer",
+          "index": true
+        },
+        "url": {
+          "type": "keyword"
+        },
+        "createTime": {
+          "type": "date",
+          "format": "strict_date_optional_time||epoch_millis",
+          "index": false
+        }
+      }
+    }
+  }
+}

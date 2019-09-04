@@ -1,0 +1,54 @@
+PUT /domain_manage
+{
+  "settings": {
+    "number_of_shards" :   1,
+    "number_of_replicas" : 1
+  },
+  "mappings": {
+    "_doc": {
+      "dynamic": false,
+      "properties": {
+        "manageId": {
+          "type": "long"
+        },
+        "memberId": {
+          "type": "long"
+        },
+        "domain": {
+          "type": "keyword"
+        },
+        "recordStatus": {
+          "type": "integer"
+        },
+        "iyongStatus": {
+          "type": "integer"
+        },
+        "analysisStatus": {
+          "type": "integer"
+        },
+        "authStatus": {
+          "type": "integer"
+        },
+        "originType": {
+          "type": "integer"
+        },
+        "registerDatetime": {
+          "type": "date",
+          "format": "strict_date_optional_time||epoch_millis"
+        },
+        "expiresDatetime": {
+          "type": "date",
+          "format": "strict_date_optional_time||epoch_millis"
+        },
+        "createDatetime": {
+          "type": "date",
+          "format": "strict_date_optional_time||epoch_millis"
+        },
+        "updateDatetime": {
+          "type": "date",
+          "format": "strict_date_optional_time||epoch_millis"
+        }
+      }
+    }
+  }
+}
