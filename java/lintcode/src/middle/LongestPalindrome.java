@@ -1,5 +1,7 @@
 package middle;
 
+import java.util.Queue;
+
 /**
  * <p>ClassName: LongestPalindrome</p>
  * <p>Description: </p>
@@ -19,29 +21,33 @@ public class LongestPalindrome {
      * @return
      */
     public static String longestPalindrome(String s) {
-        int l = 0;
-        int r = 0;
-        char[] chars = s.toCharArray();
-        int length = s.length();
-        char[] fillArr = new char[2*length - 1];
-        for (int i = 0; i < fillArr.length; i++) {
+        if (s.trim().isEmpty()) {
+            return s;
+        }
+        char[] strs = s.toCharArray();
+        char[] change = new char[s.length()*2 -1];
+        for (int i = 0; i < change.length; i++) {
             if (i%2 == 0) {
-                fillArr[i] = chars[i/2];
+                change[i] = strs[i/2];
             }else {
-                fillArr[i] = '#';
+                change[i] = '#';
             }
         }
-        for (int i = 0; i < fillArr.length; i++) {
+        int start = 0;
+        int end = 0;
+        for (int i = 0; i < change.length; i++) {
             int left = 0;
             int right = 0;
-            while (left >= 0 && right < fillArr.length) {
-                if ((i - left) < 0 || i + right >= fillArr.length) {
-                    break;
-                }
-                if (fillArr[i - left] == fillArr[i + right]) {
-                    if ((right + left) >= (l-r + 1)) {
-                        l=i-left ;
-                        r=i+right;
+            while ((i -left >= 0) && i+ right < change.length) {
+                if (change[i-left] == change[i + right]) {
+                    if (new String(change).substring(i-left, i + right + 1).replaceAll("#", "").length() <= (start-end + 1)) {
+                        left ++;
+                        right ++;
+                        continue;
+                    }
+                    if (((i + right) - (i-left) + 1) > (end -start) + 1) {
+                        start = i-left;
+                        end = i + right;
                     }
                     left ++;
                     right ++;
@@ -50,11 +56,11 @@ public class LongestPalindrome {
                 }
             }
         }
-        return fillArr.toString().substring(l, r + 1).replaceAll("#", "");
+        return new String(change).substring(start, end + 1).replaceAll("#", "");
     }
 
     public static void main(String[] args) {
-        System.out.println(longestPalindrome("sbbghj"));
+        System.out.println(longestPalindrome("babad"));
     }
 
 }
