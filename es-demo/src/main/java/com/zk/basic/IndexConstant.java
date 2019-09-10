@@ -1,4 +1,4 @@
-package com.zk.constant;
+package com.zk.basic;
 
 /**
  * <p>ClassName: IndexConstant</p>

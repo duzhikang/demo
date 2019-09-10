@@ -2,8 +2,8 @@ package com.zk.es.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zk.bo.DocDomainManage;
-import com.zk.constant.DomainManageTerm;
-import com.zk.constant.IndexConstant;
+import com.zk.basic.DomainManageTerm;
+import com.zk.basic.IndexConstant;
 import com.zk.es.DomainManageIndexService;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.index.IndexResponse;
@@ -29,7 +29,7 @@ import org.springframework.stereotype.Service;
  * @date: 2019/9/4
  * @since JDK 1.8
  */
-@Service
+@Service("domainService")
 @Slf4j
 public class DomainManageIndexServiceImpl implements DomainManageIndexService {
 

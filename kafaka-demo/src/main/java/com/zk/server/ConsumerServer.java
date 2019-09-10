@@ -5,6 +5,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.Optional;
 
 @Service
@@ -17,7 +18,7 @@ public class ConsumerServer {
         Optional<?> kafkaMessage = Optional.ofNullable(record.value());
 
         if (kafkaMessage.isPresent()) {
-
+            Collection
             Object message = kafkaMessage.get();
             System.out.println("---->"+record);
             System.out.println("---->"+message);

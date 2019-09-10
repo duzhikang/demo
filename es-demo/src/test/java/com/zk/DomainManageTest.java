@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.modelmapper.ModelMapper;
 import org.omg.PortableInterceptor.INACTIVE;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import java.util.Optional;
 
@@ -26,6 +27,7 @@ public class DomainManageTest extends ApplicationTest {
     @Autowired
     private DomainManageRepository manageRepository;
 
+    @Qualifier("kafkaService")
     @Autowired
     private DomainManageIndexService indexService;
 
@@ -36,9 +38,17 @@ public class DomainManageTest extends ApplicationTest {
     public void findall() {
         Iterable<DomainManage> all = manageRepository.findAll();
         for (DomainManage domain : all) {
-            DocDomainManage doc = new DocDomainManage();
-            modelMapper.map(domain, doc);
-            indexService.index(doc);
+            if (domain.getDomain().equals("iyong.com")) {
+                DocDomainManage doc = new DocDomainManage();
+                modelMapper.map(domain, doc);
+                indexService.index(doc);
+            }
+        }
+
+        try {
+            Thread.sleep(30000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
