@@ -38,11 +38,9 @@ public class DomainManageTest extends ApplicationTest {
     public void findall() {
         Iterable<DomainManage> all = manageRepository.findAll();
         for (DomainManage domain : all) {
-            if (domain.getDomain().equals("iyong.com")) {
-                DocDomainManage doc = new DocDomainManage();
-                modelMapper.map(domain, doc);
-                indexService.index(doc);
-            }
+            DocDomainManage doc = new DocDomainManage();
+            modelMapper.map(domain, doc);
+            indexService.index(doc);
         }
 
         try {
