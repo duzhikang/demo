@@ -1,8 +1,10 @@
 package com.rudy;
 
+import com.rudy.boradconst.BroadcastProducer;
 import com.rudy.transaction.TransactionProducer;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.*;
+import org.apache.rocketmq.client.exception.MQBrokerException;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.MessageQueueSelector;
@@ -12,6 +14,7 @@ import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.apache.rocketmq.common.message.MessageQueue;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
+import org.apache.rocketmq.remoting.exception.RemotingException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -127,6 +130,24 @@ public class ApplicationTests {
 	public void transactionProducer() throws MQClientException {
 		TransactionProducer instance = new TransactionProducer();
 		instance.producer();
+	}
+
+	@Test
+	public void broadcastProducer() {
+		BroadcastProducer instance = new BroadcastProducer();
+		try {
+			instance.producer();
+		} catch (MQClientException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (RemotingException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (MQBrokerException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
