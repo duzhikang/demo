@@ -27,10 +27,10 @@ import java.util.List;
 @Slf4j
 public class BroadcastConsumer {
 
-    private void consumer() throws MQClientException {
-        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("broadcast_g");
+    private static void consumer() throws MQClientException {
+        DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("group_broadcast");
         consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
-        consumer.setNamesrvAddr("192.168.234.188:9876");
+        consumer.setNamesrvAddr("192.168.30.188:9876");
         //
         consumer.setMessageModel(MessageModel.BROADCASTING);
         consumer.subscribe("Topic_broadcast", "*");
@@ -54,5 +54,13 @@ public class BroadcastConsumer {
         });
 
         consumer.start();
+    }
+
+    public static void main(String[] args) {
+        try {
+            consumer();
+        } catch (MQClientException e) {
+            e.printStackTrace();
+        }
     }
 }
