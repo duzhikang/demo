@@ -33,7 +33,7 @@ public class BroadcastConsumer {
         consumer.setNamesrvAddr("192.168.30.188:9876");
         //
         consumer.setMessageModel(MessageModel.BROADCASTING);
-        consumer.subscribe("Topic_broadcast", "*");
+        consumer.subscribe("Topic_A", "*");
 
         consumer.registerMessageListener(new MessageListenerConcurrently() {
             @Override
