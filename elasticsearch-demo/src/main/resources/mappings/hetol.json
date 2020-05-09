@@ -1,0 +1,70 @@
+PUT hotel
+{
+  "settings": {
+    "number_of_shards" :   5,
+    "number_of_replicas" : 1
+  },
+  "mappings": {
+    "_doc": {
+      "dynamic": false,
+      "properties": {
+        "id": {
+          "type" : "long",
+          "index" : "true"
+        },
+        "name": {
+          "type": "text",
+          "analyzer": "ik_smart",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+
+        },
+        "hotel_type": {
+          "type": "keyword"
+        },
+        "address": {
+          "type": "text",
+          "analyzer": "ik_smart"
+        },
+        "open_year": {
+          "type": "integer"
+        },
+        "score": {
+          "type": "float"
+        },
+        "content": {
+          "type": "text",
+          "analyzer": "ik_smart"
+        },
+        "city_name": {
+          "type": "keyword"
+        },
+        "province_name": {
+          "type": "keyword"
+        },
+        "area_name": {
+          "type": "keyword"
+        },
+        "introduction": {
+          "type": "text",
+          "analyzer": "ik_smart"
+        },
+        "location": {
+          "type": "geo_point"
+        },
+        "location_detail": {
+          "type": "keyword",
+          "index": "false"
+        },
+        "traffic_info_html": {
+          "type": "keyword",
+          "index": "false"
+        }
+      }
+    }
+  }
+}
