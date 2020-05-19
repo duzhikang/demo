@@ -34,6 +34,43 @@ public class IndexApiService {
     private IHotelService hotelService;
 
     public static AtomicInteger count = new AtomicInteger(0);
+
+    public void bulkIndexDocment() {
+        long count = hotelService.count();
+        long totalPages = count%1000 == 0? count/1000 : count/1000 + 1;
+        long lastPageCount = count%1000 == 0? 1000 : count%1000;
+        for (int i = 0; i < totalPages; i++) {
+            List<HotelResource> hotelResources = hotelService.pageQuery(i * 100 , 100);
+            for (HotelResource resource : hotelResources) {
+                try {
+                    IndexResponse response = client.prepareIndex("hotel", "_doc")
+                            .setSource(XContentFactory.jsonBuilder()
+                                    .startObject()
+                                    .field("id", resource.getId())
+                                    .field("name", resource.getName())
+                                    .field("hotel_type", resource.getHotelType())
+                                    .field("address", resource.getAddress())
+                                    .field("open_year", resource.getOpenYear())
+                                    .field("score", resource.getScore())
+                                    .field("content", resource.getContent())
+                                    .field("city_name", resource.getCityName())
+                                    .field("province_name", resource.getProvinceName())
+                                    .field("area_name", resource.getAreaName())
+                                    .startObject("location")
+                                    .field("lat", resource.getLatitude())
+                                    .field("lon", resource.getLongitude())
+                                    .endObject()
+                                    .field("location_detail", resource.getLocation_detail())
+                                    .field("traffic_info_html", resource.getTrafficInfoHtml())
+                                    .endObject()
+                            ).get();
+                }catch (Exception e) {
+                    log.error("error ======{}", resource.getId());
+                }
+
+            }
+        }
+    }
     
     /**
      * @Param 
