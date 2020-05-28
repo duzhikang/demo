@@ -40,7 +40,7 @@ public class HotelServiceImpl implements IHotelService {
     @Override
     public List<HotelResource> pageQuery(int start, int length) {
         Sort sort = Sort.by(Sort.Direction.DESC, "id");
-        Pageable pageable = PageRequest.of(start, length, sort);
+        Pageable pageable = PageRequest.of(start, length);
         Page<HotelResource> all = repository.findAll(pageable);
         List<HotelResource> list = all.stream().map(house -> {
             return house;
