@@ -1,4 +1,4 @@
-package com.rudy.elasticsearch.termquery;
+package com.rudy.elasticsearch.query;
 
 import com.rudy.ElasitcsearchSevenDemoApplicationTests;
 import org.junit.jupiter.api.Test;
@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TermQueryServiceTest extends ElasitcsearchSevenDemoApplicationTests {
+class WildcardQueryServiceTest extends ElasitcsearchSevenDemoApplicationTests {
 
     @Autowired
-    private TermQueryService termQueryService;
+    private WildcardQueryService wildcardQueryService;
 
     @Test
-    void termQuery() {
-        termQueryService.termQuery();
+    void wildcardQuery() {
+        wildcardQueryService.wildcardQuery();
     }
 }
