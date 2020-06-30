@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @SpringBootTest
-class ElasitcsearchSevenDemoApplicationTests {
+public class ElasitcsearchSevenDemoApplicationTests {
 
 	@Resource
 	private IndexApiService service;
@@ -22,6 +22,7 @@ class ElasitcsearchSevenDemoApplicationTests {
 	void contextLoads() {
 		service.bulkDoc();
 	}
+
 	@Test
 	void page() {
 		List<HotelResource> hotelResources = iHotelService.pageQuery(0, 100);
