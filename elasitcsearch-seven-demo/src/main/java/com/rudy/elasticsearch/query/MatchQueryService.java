@@ -102,7 +102,8 @@ public class MatchQueryService {
             searchRequest.source(searchSourceBuilder);
             SearchResponse searchResponse = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
 
-            if (RestStatus.OK.equals(searchResponse.status()) && searchResponse.getHits().getTotalHits().value > 0) {
+            if (RestStatus.OK.equals(searchResponse.status()
+            ) && searchResponse.getHits().getTotalHits().value > 0) {
                 SearchHits hits = searchResponse.getHits();
                 for (SearchHit hit : hits) {
                     // 将 JSON 转换成对象
